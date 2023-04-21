@@ -1,0 +1,77 @@
+/* Main body of the page */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+/* To make it print right */
+@page {
+    margin: 0;
+}
+
+/* Define a page (A4) */
+div.page {
+    height: 297mm;
+    position: absolute;
+    margin: 0;
+}
+
+/* Labels */
+div.labelcell {
+    position: absolute;
+    width: 63.5mm;
+    height: 46.6mm;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    margin: -1px;
+}
+
+/* Content container on each label */
+div.labelcontent {
+    margin: auto;
+    padding-left: 2mm;
+    padding-right: 2mm;
+    padding-top: 3mm;
+    padding-bottom: 3mm;
+    overflow: none;
+}
+
+/* Main label text */
+p {
+    font-size: 12pt;
+    margin-top: 1mm;
+    margin-bottom: 1mm;
+}
+
+/* The QR Code */
+div.labelcell img {
+    position: absolute;
+    width: 25mm;
+    height: 25mm;
+    bottom: 1mm;
+    right: 1mm;
+}
+
+/* The Event ID */
+div.labelcell span.eventid {
+    position: absolute;
+    left: 2mm;
+    bottom: 2mm;
+    font-size: 8pt;
+}
+
+/* The membership number */
+div.labelcell span.memno {
+    position: absolute;
+    right: 2mm;
+    top: 2mm;
+    font-size: 14pt;
+}
+
+/* The main label text container */
+div.labelcell div.info {
+    position: absolute;
+    left: 2mm;
+    top: 2mm;
+}

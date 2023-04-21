@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Labels for {{ event }}</title>
+    <link rel="stylesheet" type="text/css" href="labels.css">
+</head>
+<body>
+{% set pages = (riders|length / 18)|round(0, 'ceil')|int %}
+{% for p in range(0, pages) %}
+    {% set pagetop = p * 297 %}
+    <div class="page" style="top: {{ pagetop }}mm;">
+        {% for y in range(0, 6) %}
+            {% for x in range(0, 3) %}
+                {% set rider = (p * 18) + ((y * 3) + x) %}
+                {% set lableft = leftmargin + ((labelxgap + labelwidth) * x) %}
+                {% set labtop = topmargin + ((labelygap + labelheight) * y) %}
+                <div class="labelcell" style="left: {{ lableft }}mm; top: {{ labtop }}mm;">
+                    <div class="labelcontent">
+                        {% if riders[rider]['blank'] is true %}
+                            <p></p>
+                        {% else %}
+                            <div class="info">
+                                <p>{{ riders[rider]['Firstname'].title() }} {{ riders[rider]['Surname'].title() }}</p>
+                                <p>{{ riders[rider]['Postal']|addr|safe }}</p>
+                            </div>
+                            <img src="data:image/png;base64,{{ riders[rider]['qr'] }}">
+                            <span class="memno">{{ riders[rider]['Mem No.'] }}</span>
+                            <span class="eventid">Event: {{ riders[rider]['Event'] }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endfor %}
+</body>
+</html>
